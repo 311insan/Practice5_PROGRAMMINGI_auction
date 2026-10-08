@@ -99,5 +99,31 @@ public class Auction
             return null;
         }
     }
+    
+    public void close(){
+        ArrayList<Lot> soldLots = new ArrayList<>();
+        for(Lot lot : listOfLots){
+            System.out.println(lot.toString());
+            Bid winner = lot.getHighestBid();
+            System.out.println(lot.toString());
+            if(winner != null){
+                soldLots.add(lot);
+                System.out.println("The successful bidder is: " + (winner.getBidder()).getName());
+            } else {
+                System.out.println("no bidder for this lot");
+            }
+        }
+    }
+    
+    public ArrayList<Lot> getUnsold(){
+        ArrayList<Lot> unsoldLots = new ArrayList<>();
+        for (Lot lot : listOfLots){
+            Bid winner = (lot.getHighestBid());
+            if(winner == null){
+                unsoldLots.add(lot);
+            }
+        }
+        return unsoldLots;
+    }
 }
 
